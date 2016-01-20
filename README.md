@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/MadrakIO/easy-cron-deployment-bundle/badges/gpa.svg)](https://codeclimate.com/github/MadrakIO/easy-cron-deployment-bundle)
+
 Installation
 ============
 
