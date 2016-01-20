@@ -1,0 +1,26 @@
+{
+    "name": "madrakio/easy-cron-deployment-bundle",
+    "description": "Easy Cron Deployment Bundle: An easy way to manage your cron using YAML and Symfony Console",
+    "keywords": ["cron", "management", "symfony", "deployment"],
+    "homepage": "https://github.com/madrakio/easy-cron-deployment-bundle",
+    "authors": [
+        {
+            "name": "John Madrak",
+            "homepage": "http://madrak.net",
+            "role": "Developer"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/symfony": ">=2.7.0"
+    },
+    "require-dev": {
+        "symfony/phpunit-bridge": "~2.7"
+    },
+    "autoload": {                                                                                                                                                                                                                         
+        "psr-4": {                                                                                                                                                                                                                        
+            "MadrakIO\\EasyCronDeploymentBundle\\": ""
+        }
+    }
+}
