@@ -27,14 +27,14 @@ class CronEnableCommand extends AbstractCronCommand
     {
         $this->interactiveOperationConfirmation($input, $output);
                 
-        $crontabListOutputLines = explode("\r\n", $this->getSystemCrontabList($output));
+        $crontabListOutputLines = explode(PHP_EOL, $this->getSystemCrontabList($output));
         if (empty($crontabListOutputLines[count($crontabListOutputLines) - 1]) === true) {
             array_pop($crontabListOutputLines);        
         }
         
         $newCrontabFileContents = '';
         foreach ($crontabListOutputLines AS $crontabLine) {
-            $newCrontabFileContents .= ltrim($crontabLine, '#') . "\r\n";
+            $newCrontabFileContents .= ltrim($crontabLine, '#') . PHP_EOL;
         }
 
         $this->setSystemCrontab($output, $newCrontabFileContents);

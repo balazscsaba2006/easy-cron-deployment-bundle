@@ -25,7 +25,7 @@ class CronVerifyCommand extends AbstractCronCommand
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $crontabListOutputLines = explode("\r\n", $this->getSystemCrontabList($output));
+        $crontabListOutputLines = explode(PHP_EOL, $this->getSystemCrontabList($output));
         if (empty($crontabListOutputLines[count($crontabListOutputLines) - 1]) === true) {
             array_pop($crontabListOutputLines);        
         }
@@ -54,11 +54,11 @@ class CronVerifyCommand extends AbstractCronCommand
         }
                 
         if ($input->getOption('strict') === true && count($unexpectedTasks) > 0) {
-            $this->outputFormattedBlock($output, ['Error!', 'There was at least one unexpected task in the current crontab:', implode("\r\n", $unexpectedTasks)], 'error');
+            $this->outputFormattedBlock($output, ['Error!', 'There was at least one unexpected task in the current crontab:', implode(PHP_EOL, $unexpectedTasks)], 'error');
         }
 
         if (count($missingTasks) > 0) {
-            $this->outputFormattedBlock($output, ['Error!', 'There was at least one task that was missing from the current crontab:', implode("\r\n", $missingTasks)], 'error');
+            $this->outputFormattedBlock($output, ['Error!', 'There was at least one task that was missing from the current crontab:', implode(PHP_EOL, $missingTasks)], 'error');
         }
 
         if (($input->getOption('strict') === false || $input->getOption('strict') === true && count($unexpectedTasks) === 0) && count($missingTasks) === 0) {

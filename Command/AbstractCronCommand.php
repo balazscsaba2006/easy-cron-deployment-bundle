@@ -24,7 +24,7 @@ abstract class AbstractCronCommand extends ContainerAwareCommand
         $cronLine .= $job['minute'] . ' ' . $job['hour'] . ' ' . $job['day'] . ' ' . $job['month'] . ' ' . $job['day_of_the_week'] . ' ' . $job['task']; 
         
         if ($includeNewLine === true) {
-            $cronLine .= "\r\n";
+            $cronLine .= PHP_EOL;
         }
         
         return $cronLine;
