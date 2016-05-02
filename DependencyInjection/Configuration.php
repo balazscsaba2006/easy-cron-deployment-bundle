@@ -33,7 +33,6 @@ class Configuration implements ConfigurationInterface
                             ->booleanNode('disabled')
                                 ->info("Should the job be commented so that it doesn't run?")
                                 ->defaultValue(false)
-                                ->cannotBeEmpty()
                             ->end()
                             ->scalarNode('minute')
                                 ->info('The minute(s) at which the job should be triggered. 0-59. Defaults to *.')            
