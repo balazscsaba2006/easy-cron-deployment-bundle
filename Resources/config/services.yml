@@ -1,0 +1,24 @@
+services:
+    madrak_io_easy_cron_deployment.deploy_command:
+        class: 'MadrakIO\EasyCronDeploymentBundle\Command\CronDeployCommand'
+        arguments:
+            - '%madrak_io_easy_cron_deployment.jobs%'
+        tags:
+            - { name: console.command }
+
+    madrak_io_easy_cron_deployment.disable_command:
+        class: 'MadrakIO\EasyCronDeploymentBundle\Command\CronDisableCommand'
+        tags:
+            - { name: console.command }
+
+    madrak_io_easy_cron_deployment.enable_command:
+        class: 'MadrakIO\EasyCronDeploymentBundle\Command\CronEnableCommand'
+        tags:
+            - { name: console.command }
+
+    madrak_io_easy_cron_deployment.verify_command:
+        class: 'MadrakIO\EasyCronDeploymentBundle\Command\CronVerifyCommand'
+        arguments:
+            - '%madrak_io_easy_cron_deployment.jobs%'
+        tags:
+            - { name: console.command }

@@ -5,11 +5,24 @@ namespace MadrakIO\EasyCronDeploymentBundle\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use MadrakIO\EasyCronDeploymentBundle\Command\AbstractCronCommand;
-
 
 class CronDeployCommand extends AbstractCronCommand
 {
+    /**
+     * @var array
+     */
+    private $jobs;
+
+    /**
+     * @param array $jobs
+     */
+    public function __construct(array $jobs)
+    {
+        parent::__construct();
+
+        $this->jobs = $jobs;
+    }
+
     protected function configure()
     {
         $this
@@ -29,7 +42,7 @@ class CronDeployCommand extends AbstractCronCommand
         $this->interactiveOperationConfirmation($input, $output);
 
         $cronFileContents = '';
-        foreach ($this->getContainer()->getParameter('madrak_io_easy_cron_deployment.jobs') AS $job) {
+        foreach ($this->jobs as $job) {
             if ($this->checkJobHasMatchingHostRequirement($job) === true) {
                 $cronFileContents .= $this->jobArrayToCrontabLine($job);
             }

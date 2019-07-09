@@ -2,7 +2,7 @@
 
 namespace MadrakIO\EasyCronDeploymentBundle\Command;
 
-use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
+use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Process\Process;
@@ -11,7 +11,7 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Console\Question\ConfirmationQuestion;
 
-abstract class AbstractCronCommand extends ContainerAwareCommand
+abstract class AbstractCronCommand extends Command
 {
     protected function jobArrayToCrontabLine(array $job, $includeNewLine = true)
     {

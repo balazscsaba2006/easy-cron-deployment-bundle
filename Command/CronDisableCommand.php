@@ -5,7 +5,6 @@ namespace MadrakIO\EasyCronDeploymentBundle\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use MadrakIO\EasyCronDeploymentBundle\Command\AbstractCronCommand;
 
 class CronDisableCommand extends AbstractCronCommand
 {
