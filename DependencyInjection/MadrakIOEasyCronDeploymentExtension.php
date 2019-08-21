@@ -29,15 +29,5 @@ class MadrakIOEasyCronDeploymentExtension extends Extension
             new FileLocator(__DIR__.'/../Resources/config')
         );
         $loader->load('services.yml');
-
-        $jobAwareCommandIds = $container->findTaggedServiceIds('easy_cron_deployment_jobs_aware_command');
-        if (!$jobAwareCommandIds) {
-            return;
-        }
-
-        foreach (array_keys($jobAwareCommandIds) as $commandId) {
-            $definition = $container->getDefinition($commandId);
-            $definition->setArgument('$jobs', $config['jobs']);
-        }
     }
 }
