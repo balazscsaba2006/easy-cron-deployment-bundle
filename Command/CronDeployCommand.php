@@ -43,7 +43,7 @@ class CronDeployCommand extends AbstractCronCommand
 
         $cronFileContents = '';
         foreach ($this->jobs as $job) {
-            if ($this->checkJobHasMatchingHostRequirement($job) === true) {
+            if (true === $this->checkJobHasMatchingHostRequirement($job)) {
                 $cronFileContents .= $this->jobArrayToCrontabLine($job);
             }
         }

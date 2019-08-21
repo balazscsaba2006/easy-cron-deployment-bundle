@@ -25,19 +25,18 @@ class CronDisableCommand extends AbstractCronCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->interactiveOperationConfirmation($input, $output);
-                
+
         $crontabListOutputLines = explode(PHP_EOL, $this->getSystemCrontabList($output));
-        if (empty($crontabListOutputLines[count($crontabListOutputLines) - 1]) === true) {
-            array_pop($crontabListOutputLines);        
+        if (true === empty($crontabListOutputLines[count($crontabListOutputLines) - 1])) {
+            array_pop($crontabListOutputLines);
         }
-        
+
         $newCrontabFileContents = '';
-        foreach ($crontabListOutputLines AS $crontabLine) {
-            $newCrontabFileContents .= "#" . $crontabLine . PHP_EOL;
+        foreach ($crontabListOutputLines as $crontabLine) {
+            $newCrontabFileContents .= '#'.$crontabLine.PHP_EOL;
         }
 
         $this->setSystemCrontab($output, $newCrontabFileContents);
         $this->outputFormattedBlock($output, ['Success!', 'Your cron has been successfully disabled!'], 'info');
     }
 }
-

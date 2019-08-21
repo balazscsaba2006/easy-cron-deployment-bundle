@@ -32,7 +32,7 @@ class CronVerifyCommand extends AbstractCronCommand
                'strict',
                null,
                InputOption::VALUE_NONE,
-               "If set, any extra cron tasks will trigger an error. Otherwise extra tasks are ignored."
+               'If set, any extra cron tasks will trigger an error. Otherwise extra tasks are ignored.'
             )
         ;
     }
@@ -40,34 +40,34 @@ class CronVerifyCommand extends AbstractCronCommand
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $crontabListOutputLines = explode(PHP_EOL, $this->getSystemCrontabList($output));
-        if (empty($crontabListOutputLines[count($crontabListOutputLines) - 1]) === true) {
-            array_pop($crontabListOutputLines);        
+        if (true === empty($crontabListOutputLines[count($crontabListOutputLines) - 1])) {
+            array_pop($crontabListOutputLines);
         }
-        
+
         $expectedTasks = [];
         foreach ($this->jobs as $job) {
-            if ($this->checkJobHasMatchingHostRequirement($job) === true) {
-                $expectedTasks[] = $this->jobArrayToCrontabLine($job, false);                
+            if (true === $this->checkJobHasMatchingHostRequirement($job)) {
+                $expectedTasks[] = $this->jobArrayToCrontabLine($job, false);
             }
         }
 
         $missingTasks = [];
-        foreach ($expectedTasks AS $expectedTask) {
-            if (in_array($expectedTask, $crontabListOutputLines) === false) {
+        foreach ($expectedTasks as $expectedTask) {
+            if (false === in_array($expectedTask, $crontabListOutputLines)) {
                 $missingTasks[] = $expectedTask;
             }
         }
-        
-        if ($input->getOption('strict') === true) {
+
+        if (true === $input->getOption('strict')) {
             $unexpectedTasks = [];
-            foreach ($crontabListOutputLines AS $crontabLine) {
-                if (in_array($crontabLine, $expectedTasks) === false) {
+            foreach ($crontabListOutputLines as $crontabLine) {
+                if (false === in_array($crontabLine, $expectedTasks)) {
                     $unexpectedTasks[] = $crontabLine;
-                } 
-            }            
+                }
+            }
         }
-                
-        if ($input->getOption('strict') === true && count($unexpectedTasks) > 0) {
+
+        if (true === $input->getOption('strict') && count($unexpectedTasks) > 0) {
             $this->outputFormattedBlock($output, ['Error!', 'There was at least one unexpected task in the current crontab:', implode(PHP_EOL, $unexpectedTasks)], 'error');
         }
 
@@ -75,7 +75,7 @@ class CronVerifyCommand extends AbstractCronCommand
             $this->outputFormattedBlock($output, ['Error!', 'There was at least one task that was missing from the current crontab:', implode(PHP_EOL, $missingTasks)], 'error');
         }
 
-        if (($input->getOption('strict') === false || $input->getOption('strict') === true && count($unexpectedTasks) === 0) && count($missingTasks) === 0) {
+        if ((false === $input->getOption('strict') || true === $input->getOption('strict') && 0 === count($unexpectedTasks)) && 0 === count($missingTasks)) {
             $this->outputFormattedBlock($output, ['Success!', 'Your cron has been successfully verified!'], 'info');
         }
     }
