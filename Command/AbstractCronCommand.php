@@ -31,7 +31,8 @@ abstract class AbstractCronCommand extends Command
 
     protected function checkJobHasMatchingHostRequirement(array $job): bool
     {
-        return 0 === count($job['hosts']) || count($job['hosts']) > 0 && true === in_array(gethostname(), $job['hosts']);
+        return 0 === count($job['hosts'])
+            || (count($job['hosts']) > 0 && true === in_array(gethostname(), $job['hosts'], true));
     }
 
     protected function outputFormattedBlock(OutputInterface $output, array $messages, $type): void
@@ -41,7 +42,7 @@ abstract class AbstractCronCommand extends Command
 
     protected function getSystemCrontabList(OutputInterface $output): ?string
     {
-        $process = new Process('crontab -l');
+        $process = new Process(['crontab', '-l']);
         $process->run();
 
         try {
@@ -60,7 +61,7 @@ abstract class AbstractCronCommand extends Command
         $filesystem = new FileSystem();
         $filesystem->dumpFile($tempCronFileName, $newContents);
 
-        $process = new Process('crontab '.$tempCronFileName);
+        $process = new Process(['crontab', $tempCronFileName]);
         try {
             $process->mustRun();
 

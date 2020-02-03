@@ -1,22 +1,30 @@
 {
-    "name": "madrakio/easy-cron-deployment-bundle",
+    "name": "balazscsaba2006/easy-cron-deployment-bundle",
     "description": "Easy Cron Deployment Bundle: An easy way to manage your cron using YAML and Symfony Console",
     "keywords": ["cron", "management", "symfony", "deployment"],
-    "homepage": "https://github.com/madrakio/easy-cron-deployment-bundle",
+    "homepage": "https://github.com/balazscsaba2006/easy-cron-deployment-bundle",
     "authors": [
         {
             "name": "John Madrak",
             "homepage": "http://madrak.net",
             "role": "Developer"
+        },
+        {
+            "name": "Balazs Csaba",
+            "homepage": "https://www.humandirect.eu",
+            "role": "Developer"
         }
     ],
     "license": "MIT",
     "require": {
-        "php": ">=5.4",
-        "symfony/symfony": ">=2.7.0"
-    },
-    "require-dev": {
-        "symfony/phpunit-bridge": "~2.7"
+        "php": ">=7.3",
+        "symfony/config": "^4.0 || ^5.0",
+        "symfony/console": "^4.0 || ^5.0",
+        "symfony/dependency-injection": "^4.0 || ^5.0",
+        "symfony/filesystem": "^4.0 || ^5.0",
+        "symfony/yaml": "^4.0 || ^5.0",
+        "symfony/process": "^4.0 || ^5.0",
+        "symfony/http-kernel": "^4.0 || ^5.0"
     },
     "autoload": {                                                                                                                                                                                                                         
         "psr-4": {                                                                                                                                                                                                                        

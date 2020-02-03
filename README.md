@@ -1,7 +1,6 @@
-[![Code Climate](https://codeclimate.com/github/MadrakIO/easy-cron-deployment-bundle/badges/gpa.svg)](https://codeclimate.com/github/MadrakIO/easy-cron-deployment-bundle)
-[![Packagist](https://img.shields.io/packagist/v/MadrakIO/easy-cron-deployment-bundle.svg)]()
-[![Packagist](https://img.shields.io/packagist/dt/MadrakIO/easy-cron-deployment-bundle.svg)]()
-[![Packagist](https://img.shields.io/packagist/l/MadrakIO/easy-cron-deployment-bundle.svg)]()
+[![Packagist](https://img.shields.io/packagist/v/balazscsaba2006/easy-cron-deployment-bundle.svg)]()
+[![Packagist](https://img.shields.io/packagist/dt/balazscsaba2006/easy-cron-deployment-bundle.svg)]()
+[![Packagist](https://img.shields.io/packagist/l/balazscsaba2006/easy-cron-deployment-bundle.svg)]()
 
 Installation
 ============
@@ -13,7 +12,7 @@ Open a command console, enter your project directory and execute the
 following command to download the latest stable version of this bundle:
 
 ```bash
-$ composer require madrakio/easy-cron-deployment-bundle
+$ composer require balazscsaba2006/easy-cron-deployment-bundle
 ```
 
 This command requires you to have Composer installed globally, as explained
