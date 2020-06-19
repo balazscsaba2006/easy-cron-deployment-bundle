@@ -17,10 +17,10 @@ class Configuration implements ConfigurationInterface
      */
     public function getConfigTreeBuilder()
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('madrak_io_easy_cron_deployment');
+        $builder = new TreeBuilder('madrak_io_easy_cron_deployment');
 
-        $rootNode
+        $builder
+            ->getRootNode()
             ->children()
                 ->arrayNode('jobs')
                     ->requiresAtLeastOneElement()
@@ -69,6 +69,6 @@ class Configuration implements ConfigurationInterface
                 ->end()
             ->end();
 
-        return $treeBuilder;
+        return $builder;
     }
 }
